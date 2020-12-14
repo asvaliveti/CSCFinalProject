@@ -1,0 +1,75 @@
+create tester class Main
+    launch application in main method
+    render GUI in start method
+
+create GUI class
+    render the GUI when the object is constructed
+    create a HBox with all of the other panes on it
+    add all of the other panes to it
+    add the HBox to the Scene and add the scene to the stage
+
+    use method for each column
+    first column method
+        add text and an image to the first column
+
+    second column method
+        create Cards class and get 4 random cards (2 for dealer and 2 for player)
+        add cards to the list of the player's cards
+        render cards in player area
+        add text explaining current value
+        use ValueCalculator to get the value of the cards
+        repeat process for dealer cards keep one card face down even though value is known to machine
+
+    create third column method
+       create 2 panes using methods that return 2 buttons
+       add them to VBox and render them
+
+    create hit me button method
+        set an on click event for the button
+        clear playerCards and add current cards again
+        clear the player area and rerender the images
+        add a new card using a for loop
+        recalculate the total value and change the text
+        if player busts, create a modal displaying that
+        add the button to a pane and return the pane
+
+    create stand button method
+        create an on click event
+        calculate value of player and dealer
+        rerender dealer cards to reveal dealer's cards
+        dealer adds a card if his cards are less than 16
+        recalculate the dealer total with the new card added for the dealer
+        create a modal representing if the player won or not
+
+    create busted modal method
+        create a second stage
+        add text explaining that the player busted
+        create a button that restarts the game and resets all fields
+
+    create finished modal method
+        create second stage
+        add text explaining that the player lost or won
+        create a button that restarts the game and resets all fields
+
+create Cards class
+    add 52 integers to the cards List
+    create getter and setter methods for the total Cards List and the cards list of cards currently in play
+    create a method that shuffles the numbers in the list
+    create a method to add cards to the current list
+    create a method to clear the current card list
+    create a method to add a specific part of cards to the list
+    create a method to get a card from the current list at a specific index
+
+create ValueCalculator class
+    get value method
+        use text io to look at the text values ordered (low bound, high bound, value)
+        Parse through the file and get value
+        return the value
+
+    totalValue method
+        calculate the total value of an arrayList of cards
+        set the total value instance field
+
+    total value method
+        return the total value
+

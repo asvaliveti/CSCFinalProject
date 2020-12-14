@@ -123,6 +123,14 @@ public class GUI {
 
             dealerArea.getChildren().addAll(dealeriv1, dealeriv2);
 
+            ValueCalculator valueCalculator = new ValueCalculator(dealerCards);
+            valueCalculator.totalValue();
+            int dealerTotal = valueCalculator.getTotal();
+
+            if (total == 21) {
+                createFinishedModal(total, dealerTotal);
+            }
+
             //add images and text to second column
             secondColumn.getChildren().addAll(currentCardsText, playerArea, yourTotal, dealerText, dealerArea);
         } catch (Exception e) {
@@ -182,6 +190,8 @@ public class GUI {
                     if (total > 21) {
                         createBustedModal();
                         hitMeButton.setDisable(true);
+                    } else if (total == 21) {
+                        createFinishedModal(21, 0);
                     }
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -244,7 +254,7 @@ public class GUI {
 
                     ValueCalculator newDealerCalc = new ValueCalculator(dealerCards);
                     newDealerCalc.totalValue();
-                    int newDealerTotal = dealerCalc.getTotal();
+                    int newDealerTotal = newDealerCalc.getTotal();
 
                     //create modal based on who wins
                     createFinishedModal(playerTotal, newDealerTotal);
@@ -303,7 +313,6 @@ public class GUI {
     public void createFinishedModal(int playerTotal, int dealerTotal) {
         //create modal based on who wins
         Text endGame;
-        System.out.println(dealerTotal + " " + playerTotal);
         if (playerTotal < dealerTotal && dealerTotal <= 21) {
             endGame = new Text("Oh no, you lost!");
             endGame.setFill(Color.RED);

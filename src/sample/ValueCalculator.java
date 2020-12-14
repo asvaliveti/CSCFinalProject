@@ -16,7 +16,7 @@ public class ValueCalculator {
 
     //use text io to find the value of the cards
     public int getValue(int cardNumber) throws FileNotFoundException {
-        File f = new File("C:\\Users\\asval\\Documents\\NOVA\\CSC201\\FinalProject\\src\\sample\\values.txt");
+        File f = new File(".\\src\\sample\\values.txt");
         Scanner scan = new Scanner(f);
         int value = 0;
         while(scan.hasNext()) {
@@ -26,7 +26,7 @@ public class ValueCalculator {
                 value = Integer.parseInt(arr[2]);
             }
             if (value == 1) {
-                if (total + 11 >= 21) {
+                if (total + 11 > 21) {
                     value = 1;
                 } else {
                     value = 11;
